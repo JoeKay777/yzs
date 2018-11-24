@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="cn.com.seo.dao.LoginDao">     
+  
+  
+    <select id="findAll" resultType="cn.com.seo.bean.User" >  
+        select * from user  where 1=1 and role_type="0"
+        <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+		and username like '%${username}%'
+		</if>
+		<if test="status!=null and !&quot;&quot;.equals(status.trim())">
+		and user_status=#{status}
+		</if>
+		<if test="rechange_status!=null and !&quot;&quot;.equals(rechange_status.trim())">
+		and rechange_status=#{rechange_status}
+		</if>
+    </select>  
+      
+    <insert id="save" parameterType="cn.com.seo.bean.User" useGeneratedKeys="true" keyProperty="user_id">  
+        insert into user(username,password,mail,phone,role_type,user_status,company,register_time,qq,balance,ulevel,keyamount,rechange_status,user_msg) 
+        values (#{username},#{password},#{mail},#{phone},#{role_type},
+        #{user_status},#{company},#{register_time},#{qq},#{balance},#{ulevel},#{keyamount},#{rechange_status},#{user_msg})  
+    </insert>  
+  
+    <delete id="delete" >  
+        delete from user where username=#{username}  
+    </delete>  
+  
+    <update id="update" parameterType="cn.com.seo.bean.User">  
+        update user set company=#{company},mail=#{mail},phone=#{phone},qq=#{qq},user_msg=#{user_msg}
+         where user_id=#{user_id}  
+    </update>  
+  	<update id="uptState" >  
+        update user set user_status=#{user_status} where  username=#{username}
+    </update> 
+    <update id="uptPwd" >  
+        update user set oldpwd=#{oldPwd} ,password=#{newPwd} where  user_id=#{user_id}
+    </update> 
+    <select id="findById" parameterType="int" resultType="cn.com.seo.bean.User">  
+         select * from user where user_id=#{user_id}  
+    </select>  
+    
+     <select id="findByNamePass" parameterType="String" resultType="cn.com.seo.bean.User">  
+         select * from user where username=#{username} and password=#{password}  and user_status="1"
+    </select> 
+      
+      <select id="findByName" resultType="cn.com.seo.bean.User">  
+         select * from user where 1=1
+         <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+		and username=#{username}
+		</if>
+    </select> 
+    
+     <select id="findUserByState"  resultType="cn.com.seo.bean.User">  
+         select * from user  where 1=1 and role_type="0"
+        <if test="user_status!=null and !&quot;&quot;.equals(user_status.trim())">
+		and user_status=#{user_status}
+		</if>
+    </select> 
+    
+    
+</mapper>  

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.seo.dao.KeywordsDao">
+	<select id="KeywordsShowByParam" resultType="cn.com.seo.bean.Keywords" >
+		select * from keywords where 1=1
+		<if test="keywords!=null and !&quot;&quot;.equals(keywords.trim())">
+		and keywords =#{keywords}<!-- like '%${keywords}%' -->
+		</if>
+		<if test="state!=null and !&quot;&quot;.equals(state.trim())">
+		and state = #{state}
+		</if>
+		<if test="search_engines!=null and !&quot;&quot;.equals(search_engines.trim())">
+		and search_engines=#{search_engines}
+		</if>
+		<if test="username!=null and !&quot;&quot;.equals(username.trim())">
+		and username=#{username}
+		</if>
+		<if test="pmstate!=null and !&quot;&quot;.equals(pmstate.trim())">
+		and pmstate=#{pmstate}
+		</if>
+		<if test="csdj!=null and !&quot;&quot;.equals(csdj.trim())">
+		and csdj=#{csdj}
+		</if>
+		<if test="chupai!=null and !&quot;&quot;.equals(chupai.trim())">
+			<if test="&quot;1&quot;.equals(chupai.trim())">
+				and CAST(xinpai AS signed) &lt;=10
+			</if>
+			<if test="&quot;2&quot;.equals(chupai.trim())">
+				and CAST(xinpai AS signed) &gt;=11 and CAST(xinpai AS signed) &lt;=30
+			</if>
+			<if test="&quot;3&quot;.equals(chupai.trim())">
+				and CAST(xinpai AS signed) &gt;=31 and CAST(xinpai AS signed) &lt;=50
+			</if>
+			<if test="&quot;4&quot;.equals(chupai.trim())">
+				and CAST(xinpai AS signed) &gt;=51 and CAST(xinpai AS signed) &lt;=99
+			</if>
+			<if test="&quot;5&quot;.equals(chupai.trim())">
+				and CAST(xinpai AS signed) &gt;=100 and CAST(xinpai AS signed) &lt;=9998
+			</if>
+			<if test="&quot;6&quot;.equals(chupai.trim())">
+				and xinpai='10000'
+			</if>
+			<if test="&quot;7&quot;.equals(chupai.trim())">
+				and xinpai='9999'
+			</if>
+		</if>
+		<if test="xinpai!=null and !&quot;&quot;.equals(xinpai.trim())">
+			<if test="&quot;1&quot;.equals(xinpai.trim())">
+				and CAST(zrpai AS signed) &gt; 3 and CAST(xinpai AS signed) &lt;= 3 and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;2&quot;.equals(xinpai.trim())">
+				and CAST(zrpai AS signed) &lt;= 3 and CAST(xinpai AS signed) &gt; 3 and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;3&quot;.equals(xinpai.trim())">
+				and CAST(zrpai AS signed) &gt; 10  and CAST(xinpai AS signed) &lt;= 10 and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;4&quot;.equals(xinpai.trim())">
+				and CAST(zrpai AS signed) &lt;= 10  and CAST(xinpai AS signed) &gt; 10 and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;5&quot;.equals(xinpai.trim())">
+				and CAST(zrpai AS signed) &gt;50  and CAST(xinpai AS signed) &lt;=50  and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;6&quot;.equals(xinpai.trim())">
+				and CAST(zrpai AS signed) &lt;=50  and CAST(xinpai AS signed) &gt;50  and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;7&quot;.equals(xinpai.trim())">
+				and xinpai='10000' and pmupt_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;8&quot;.equals(xinpai.trim())">
+				and xinpai='9999' and add_date=date_format(now(),'20%y%m%d')
+			</if>
+			<if test="&quot;9&quot;.equals(xinpai.trim())">
+				 and pmupt_date != date_format(now(),'20%y%m%d')
+			</if>
+		</if>
+		<if test="pmbh!=null and !&quot;&quot;.equals(pmbh.trim())">
+		and pmbh=#{pmbh}
+		</if>
+		<if test="pxStyle!=null and !&quot;&quot;.equals(pxStyle.trim())">
+			<if test="&quot;1&quot;.equals(pxStyle.trim())">
+			order by CAST(add_date AS signed) desc
+			</if>
+			<if test="&quot;2&quot;.equals(pxStyle.trim())">
+			order by CAST(consume_datenum AS signed) desc
+			</if>
+			<if test="&quot;3&quot;.equals(pxStyle.trim())">
+			order by CAST(xinpai AS signed) asc
+			</if>
+			<if test="&quot;4&quot;.equals(pxStyle.trim())">
+			order by price asc
+			</if>
+		</if>
+	</select>
+
+	 <insert id="save" parameterType="cn.com.seo.bean.Keywords" useGeneratedKeys="true" keyProperty="keywords_id">  
+       insert into keywords(search_engines,domain_address,price,consume_datenum,dabiao_datenum,add_date,chupai,zrpai,xinpai,pmbh,keywords,last_date,allIndex
+       ,mobileIndex,so360Index,state,username,tran_money,page_url,remarks,zsupt_date,pmupt_date,kkstyle,pmstate,csdj,deldate) 
+       values(#{search_engines},#{domain_address},#{price},#{consume_datenum},#{dabiao_datenum},#{add_date},#{chupai},#{zrpai},#{xinpai},#{pmbh},#{keywords}
+       ,#{last_date},#{allIndex},#{mobileIndex},#{so360Index},#{state},#{username},#{tran_money},#{page_url},#{remarks},#{zsupt_date},#{pmupt_date}
+       ,#{kkstyle},#{pmstate},#{csdj},#{deldate})  
+    </insert> 
+    
+    <insert id="userKeyDbSave" parameterType="cn.com.seo.bean.UserKeyDabiao" useGeneratedKeys="true" keyProperty="udb_id">
+    	insert into userkeydabiao(udb_username,udb_dbnum,udb_date) values(#{udb_username},#{udb_dbnum},#{udb_date})
+    </insert>
+    
+    <delete id="delete" parameterType="int">
+    	delete from keywords where keywords_id=#{keywords_id}
+    </delete>
+    
+    <update id="update">
+    	update keywords set state=#{state} where keywords_id=#{keywords_id}
+    </update>
+    
+    <select id="KeywordsBySerKey" resultType="cn.com.seo.bean.Keywords" >
+		select * from keywords where search_engines=#{search_engines}
+		and keywords=#{keywords} and domain_address=#{domain_address}
+	</select>
+	
+	 <update id="zsUpdate" parameterType="cn.com.seo.bean.Keywords">
+    	update keywords set allIndex=#{allIndex} ,mobileIndex=#{mobileIndex},so360Index=#{so360Index},
+    	consume_datenum=#{consume_datenum},price=#{price},dabiao_datenum=#{dabiao_datenum},zsupt_date=#{zsupt_date} where  
+    	keywords_id=#{keywords_id}
+    </update>
+    
+     <select id="keywordsCount" resultType="int" >
+		select count(*) from keywords where 1=1
+		<if test="keywords!=null and !&quot;&quot;.equals(keywords.trim())">
+		and keywords=#{keywords}
+		</if>
+		<if test="address!=null and !&quot;&quot;.equals(address.trim())">
+		and domain_address=#{address}
+		</if>
+		<if test="date!=null and !&quot;&quot;.equals(date.trim())">
+		and add_date=#{date}
+		</if>
+		<!-- and username=#{username} -->
+	</select>
+	<select id="keywordsById" resultType="cn.com.seo.bean.Keywords" >
+		select * from keywords where keywords_id=#{keywords_id} 
+	</select>
+	
+	<update id="pmUpdate" parameterType="cn.com.seo.bean.Keywords">
+		update keywords set chupai=#{chupai},xinpai=#{xinpai} ,zrpai=#{zrpai},pmupt_date=#{pmupt_date},
+		page_url=#{page_url},pmbh=#{pmbh},pmstate=#{pmstate},consume_datenum=#{consume_datenum},dabiao_datenum=#{dabiao_datenum}
+		 where keywords_id=#{keywords_id}
+	</update>
+	
+	<update id="uptParam" parameterType="cn.com.seo.bean.Keywords">
+		update keywords set chupai=#{chupai} ,xinpai=#{xinpai},page_url=#{page_url},pmbh=#{pmbh} where keywords_id=#{keywords_id}
+	</update>
+	
+	<update id="uptKeyword">
+		update keywords set keywords_id=#{keywords_id}
+		<if test="chupai!=null and !&quot;&quot;.equals(chupai.trim())">
+			,chupai=#{chupai}
+		</if>
+		<if test="xinpai!=null and !&quot;&quot;.equals(xinpai.trim())">
+			,xinpai=#{xinpai}
+		</if>
+		<if test="price!=null">
+			,price=#{price}
+		</if>
+		<if test="pmbh!=null and !&quot;&quot;.equals(pmbh.trim())">
+			,pmbh=#{pmbh}
+		</if>
+		<if test="remarks!=null">
+			,remarks=#{remarks}
+		</if>
+		<if test="pmupt_date!=null and !&quot;&quot;.equals(pmupt_date.trim())">
+			,pmupt_date=#{pmupt_date}
+		</if>
+		<if test="kkstyle!=null and !&quot;&quot;.equals(kkstyle.trim())">
+			,kkstyle=#{kkstyle}
+		</if>
+		<if test="pmstate!=null and !&quot;&quot;.equals(pmstate.trim())">
+			,pmstate=#{pmstate}
+		</if>
+		<if test="csdj!=null and !&quot;&quot;.equals(csdj.trim())">
+			,csdj=#{csdj}
+		</if>
+		<if test="state!=null and !&quot;&quot;.equals(state.trim())">
+			,state=#{state}
+		</if>
+		<if test="deldate!=null and !&quot;&quot;.equals(deldate.trim())">
+			,deldate=#{deldate}
+		</if>
+		<if test="csdj!=null and !&quot;&quot;.equals(csdj.trim())">
+			,csdj=#{csdj}
+		</if>
+		<if test="domain_address!=null and !&quot;&quot;.equals(domain_address.trim())">
+			,domain_address=#{domain_address}
+		</if>
+		<!-- <if test="domain!=null and !&quot;&quot;.equals(domain.trim())">
+			<if test="&quot;1&quot;.equals(domain.trim())">
+			,allIndex=#{zs}
+			</if>
+			<if test="&quot;2&quot;.equals(domain.trim())">
+			,mobileIndex=#{zs}
+			</if>
+			<if test="&quot;3&quot;.equals(domain.trim())">
+			,so360Index=#{zs}
+			</if>
+		</if> -->
+		 where keywords_id=#{keywords_id}
+	</update>
+	
+	<select id="findDabiaoByDate" resultType="cn.com.seo.bean.UserKeyDabiao" >
+		select * from userkeydabiao where 1=1
+		<if test="date!=null and !&quot;&quot;.equals(date.trim())">
+			and udb_date=#{date}
+		</if>
+		<if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and udb_username=#{username}
+		</if>
+	</select>
+</mapper>

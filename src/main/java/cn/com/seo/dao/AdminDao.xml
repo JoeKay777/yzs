@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="cn.com.seo.dao.AdminDao">
+	<insert id="insertAdmin" parameterType="cn.com.seo.bean.SeoAdmin"  useGeneratedKeys="true" keyProperty="admin_id">
+		insert into seoadmin(admin_name,admin_pass,admin_beforepass,admin_tel,admin_mail,admin_adddate,admin_grade,admin_truename,admin_qq) 
+		values
+		(#{admin_name},#{admin_pass},#{admin_beforepass},#{admin_tel},#{admin_mail},#{admin_adddate},#{admin_grade},#{admin_truename},#{admin_qq}) 
+	</insert>
+	
+	<update id="updateAdmin" parameterType="cn.com.seo.bean.SeoAdmin">
+		update seoadmin set admin_tel=#{admin_tel},admin_truename=#{admin_truename},
+		admin_mail=#{admin_mail},admin_qq=#{admin_qq} where admin_id=#{admin_id}
+	</update>
+	
+	<update id="uptPwd" parameterType="cn.com.seo.bean.SeoAdmin">
+		update seoadmin set admin_beforepass=#{oldPwd},admin_pass=#{newPwd}
+		 where admin_id=#{admin_id}
+	</update>
+	
+	<delete id="delAdmin" parameterType="int">
+		delete from seoadmin where admin_id=#{admin_id}
+	</delete>
+	
+	<select id="selByName" resultType="cn.com.seo.bean.SeoAdmin">
+		select * from seoadmin where admin_name=#{admin_name}
+	</select>
+	
+	<select id="selByNamePass" resultType="cn.com.seo.bean.SeoAdmin" parameterType="String">
+		select * from seoadmin where admin_name=#{admin_name} and admin_pass=#{admin_pass}
+	</select>
+	<select id="selAdminList" resultType="cn.com.seo.bean.SeoAdmin" >
+		select * from seoadmin where 1=1
+		<if test="admin_grade!=null and !&quot;&quot;.equals(admin_grade.trim())">
+		and admin_grade=#{admin_grade}
+		</if>
+	</select>
+	<select id="selById" resultType="cn.com.seo.bean.SeoAdmin" parameterType="int">
+		select * from seoadmin where admin_id=#{admin_id}
+	</select>
+</mapper>

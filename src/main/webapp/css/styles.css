@@ -1,0 +1,152 @@
+/* CSS Document */
+
+body,td,th {
+	font-size: 14px;
+	font-family:"微软雅黑";
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image:url(../images/content.png);
+}
+
+a:link,a:visited,a:active{color:#5d5d5d;text-decoration:none}
+a:hover{color:#5d5d5d}
+
+
+
+.page_list{text-align:center;display:inline;padding:5px 0px 5px 0px;margin:0px}
+.list_info{/*margin-right:10px*/}
+.page_list a{border:#ddd 1px solid;color:#15428b;padding:2px 5px;margin-left:2px}
+.page_list a:hover,.page_list a:active{border:#e1e6ed 1px solid;color:#000;background-color:#D3E1F6}
+.page_list span.current{border:#ddd 1px solid;padding:2px 5px;font-weight:bold;margin-left:2px;color:#FFF;background-color:#15428b}
+.page_list span.disabled{border:#f3f3f3 1px solid;padding:2px 5px;margin-left:2px;color:#000}
+
+
+.pagination {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+    .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+
+    .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+        background-color: #4382CF;
+        border-color: #3c5a74;
+    }
+    .pagination>li {
+    display: inline;
+}
+
+
+
+#sign_up {
+        -moz-border-radius: 6px;
+        background: #eef2f7;
+        -webkit-border-radius: 6px;
+        border: 1px solid #536376;
+        -webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+        -moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
+        padding: 14px 22px;
+        width: 400px;
+        position: relative;
+        display: none;
+    }
+    #sign_up #sign_up_form {
+        margin-top: 13px;
+    }
+    #sign_up label {
+        display: block;
+        margin-bottom: 10px; 
+        color: #536376;
+        font-size: .9em;
+    }
+  
+    #sign_up label input {
+        display: block;
+        width: 393px;
+        height: 31px;
+        background-position: -201px 0;
+        padding: 2px 8px;
+        font-size: 1.2em;
+        line-height: 31px;
+    }
+    .navbar-toggle1{ display:none;}
+     .navbar-toggle{ display:none;}
+@media(max-width:1099px) 
+{
+    .navbar-toggle1{ display:block;}
+    #logo{ position:relative !important;}
+    td{ height:auto !important}
+    table{ width:100%; margin:2px 0 !important;}
+    .hidden-xh{ display:none}
+    .hidden-xs{ display:none}
+    img{ width:99% !important; height:auto !important}
+    #urlid{ width:100% !important;}
+    #tjbut,#tjbut2{width:100% !important; height:30px!important; line-height:30px!important;}
+    .input{ width:75%!important;}
+    .btn{ width:25%!important;}
+    #kk tr td{ width:auto !important}
+.Hui-aside{position: absolute;top:44px;bottom:0;left:0;padding-top:10px;width:199px;z-index:99;overflow:auto; width:200px; background-color:rgba(238,238,238,0.98);_background-color:rgb(238,238,238);border-right: 1px solid #e5e5e5}
+    .Hui-aside{ float:none; height:auto; margin-top:0;padding-top:0;bottom:auto}
+	.big-page .Hui-aside{ left:0!important}
+		.menu_dropdown dt{line-height:44px}
+		.menu_dropdown li,.menu_dropdown dd li,.menu_dropdown dd li a{ line-height:44px}
+  .Hui-tabNav{ position:fixed; z-index:998}
+  .Hui-article{ top:44px}
+  .Hui-article-box{ position:static; left:0}
+  .Hui-article-box .pd-20{padding:15px}
+.Hui-article{left:0}
+.Hui-container .bk-gray{ border:none}
+.Hui-container .pd-10{ padding:0}
+.Hui-aside .menu_dropdown dl{ margin-bottom:0}
+.Hui-aside .menu_dropdown dt{display:block;line-height:35px;padding-left:15px;cursor:pointer;position:relative;border-bottom: 1px solid #e5e5e5;font-weight:normal}
+.Hui-aside .menu_dropdown dt .menu_dropdown-arrow{ position:absolute;overflow: hidden; top:0; right:15px;transition-duration:0.3s ;transition-property:all}
+.Hui-aside .menu_dropdown dd{ margin:0px; padding:0px}
+.Hui-aside .menu_dropdown dt.selected .menu_dropdown-arrow{transform: rotate(180deg)}
+.Hui-aside .menu_dropdown dd.selected{display:block; margin-left:0px}
+.Hui-aside .menu_dropdown ul{padding:0px}
+.Hui-aside .menu_dropdown li{line-height:35px;overflow:hidden;zoom:1}
+.Hui-aside .menu_dropdown li a{padding-left:15px; display:block;font-weight: bold; margin:0}
+.Hui-aside .menu_dropdown li a i{ font-weight: normal}
+.Hui-aside .menu_dropdown dd ul{padding:3px 8px}
+.Hui-aside .menu_dropdown dd li{line-height:32px}
+.Hui-aside .menu_dropdown dd li a{line-height:32px;padding-left:26px; border-bottom:none; font-weight:normal}
+.Hui-aside .menu_dropdown li a:hover{text-decoration:none}
+.Hui-aside .menu_dropdown li.current a,.menu_dropdown li.current a:hover{background-color:rgba(255,255,255,0.2)}
+.banner{ display:none; }
+.navbar-toggle1{width:30px;padding:0px; padding-top:6px; margin-top:0px; display:block; outline: 0; border: 0;}
+.navbar-toggle1 .icon-bar{background:#58676d;height:5px;width:100%;display:block;border-radius:4px;margin-bottom:3px;}
+.navbar-active1 .icon-bar{background:#e60213;}
+}
+@media(max-width:639px) 
+{
+    #logo{ width:120px !important; height:30px !important; top:1px !important;}
+    .hidden-xx{ display:none}
+    .h68{ height:35px; background-position:bottom;}
+    #payAmount{ width:100px !important}
+    #url{ width:80px !important}
+    #help{ margin-right:0px!important}
+    .modal-dialog{ width:100% !important}
+    #next_btn{ width:50% !important;}
+    input.input-width-large{ width:250px !important}
+    #addkey{ width:80px !important; font-size:14px !important; height:30px!important; line-height:30px!important;}
+    #tjbut{ width:100px !important}
+    #myform input[type=text]{ width:200px !important}
+    .login-box{ margin:0 auto !important}
+}
+@media(max-width:400px) 
+{
+    #sign_up{ width:96% !important}
+    #sign_up label input{ width:95% !important}
+}

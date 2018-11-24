@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="cn.com.seo.dao.MoneyDao">
+   <insert id="saveCheck" parameterType="cn.com.seo.bean.Rechange" useGeneratedKeys="true" keyProperty="rechange_id">  
+        insert into rechange(username,amount,add_time,payment_style,re_describe) values(#{username},#{amount},#{add_time},#{payment_style},#{re_describe})
+   </insert>  
+   
+	<update id="updateCheck" parameterType="cn.com.seo.bean.Rechange">  
+        update rechange set amount=#{amount},add_time=#{add_time},payment_style=#{payment_style},re_describe=#{re_describe}
+        where rechange_id=#{rechange_id}  
+    </update>  
+  
+  	
+    <select id="rechangeList"  resultType="cn.com.seo.bean.Rechange">  
+         select * from rechange where 1=1 
+         <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username like '%${username}%'
+		 </if>  
+		 <if test="add_time!=null and !&quot;&quot;.equals(add_time.trim())">
+			and add_time =#{add_time}
+		 </if> 
+		  <if test="payment_style!=null and !&quot;&quot;.equals(payment_style.trim())">
+			and payment_style=#{payment_style}
+		 </if> 
+		  order by add_time
+    </select>
+	
+	<select id="tranList" resultType="cn.com.seo.bean.TranDetail">
+		select * from trandetail where 1=1
+		  <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username=#{username}
+		 </if> 
+		<if test="date!=null and !&quot;&quot;.equals(date.trim())">
+			and tran_time=#{date}
+		</if> 
+		<if test="keywords_id!=null and keywords_id!=0">
+			and keywords_id=#{keywords_id}
+		</if> 
+		<if test="dabiao!=null">
+			and dabiao=#{dabiao}
+		</if> 
+	</select>
+	<!-- 注意foreach的语法,集合直接写list字符串，用item表示当前遍历的对象，结果集合通过使用逗号分隔使用separator属性 -->
+	<insert id="saveTranDetail" parameterType="cn.com.seo.bean.TranDetail" >
+		insert into trandetail(keywords_id,tran_money,tran_time,username,keywords,domain,xinpai,chupai,search_engines,dabiao)
+		 values
+			<foreach collection="list" item="tran" index="index" separator=",">
+				(#{tran.keywords_id},#{tran.tran_money},#{tran.tran_time},
+				#{tran.username},#{tran.keywords},#{tran.domain},#{tran.xinpai},#{tran.chupai},#{tran.search_engines},#{tran.dabiao})
+			</foreach>
+	</insert>
+	
+	<select id="tranCount" resultType="int">
+		select sum(tran_money) from trandetail where keywords_id=#{keywords_id}
+	</select>
+	
+	<select id="allTranSerial" resultType="cn.com.seo.bean.TranSerial">
+		select * from transerial where 1=1
+		 <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username like '%${username}%'
+		 </if>  
+		  <if test="day!=null and !&quot;&quot;.equals(day.trim())">
+			and substring(date,7,2) =#{day}
+		 </if> 
+		  <if test="month!=null and !&quot;&quot;.equals(month.trim())">
+			and substring(date,5,2) =#{month}
+		 </if> 
+		  <if test="year!=null and !&quot;&quot;.equals(year.trim())">
+			and substring(date,1,4) =#{year}
+		 </if> 
+	</select>
+	
+	<insert id="saveTranSerial" parameterType="cn.com.seo.bean.TranSerial" useGeneratedKeys="true" keyProperty="transerial_id">
+		insert into transerial(username,account,date,balance) values(#{username},#{account},#{date},#{balance})
+	</insert>
+	
+	<select id="introdayDeductAccount" resultType="decimal">
+		select sum(price) from keywords where username=#{username} and state=#{state} and pmbh=#{pmbh}
+	</select>
+	
+	<select id="getBalance" resultType="decimal">
+		select balance from user where username=#{username}
+	</select>
+	
+	<select id="getAmount" resultType="decimal">
+		select sum(amount) from rechange where 1=1
+		 <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username =#{username}
+		 </if> 
+		  <if test="payment_style!=null and !&quot;&quot;.equals(payment_style.trim())">
+			and payment_style =#{payment_style}
+		 </if> 
+	</select>
+	
+	<update id="updateBalance" >
+		update user set balance=#{balance},rechange_status=#{rechange_status} where username=#{username}
+	</update>
+	
+	<select id="getKeyTranSum" parameterType="int" resultType="decimal">
+		select sum(tran_money) from trandetail where keywords_id=#{keywords_id}
+	</select>
+	
+	<select id="getAccount"  resultType="decimal">
+		select sum(account) from transerial where 1=1
+		 <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username =#{username}
+		 </if> 
+		 <if test="day!=null and !&quot;&quot;.equals(day.trim())">
+			and substring(date,7,2) =#{day}
+		 </if> 
+		  <if test="month!=null and !&quot;&quot;.equals(month.trim())">
+			and substring(date,5,2) =#{month}
+		 </if> 
+		  <if test="year!=null and !&quot;&quot;.equals(year.trim())">
+			and substring(date,1,4) =#{year}
+		 </if> 
+	</select>
+	
+	<select id="tranKeys"  resultType="cn.com.seo.bean.TranDetail">
+		select * from trandetail where 1=1
+		 <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username =#{username}
+		 </if> 
+		 <if test="keywords_id!=0">
+			and keywords_id=#{keywords_id}
+		 </if> 
+		 <if test="keywords!=null and !&quot;&quot;.equals(keywords.trim())">
+			and keywords like '%${keywords}%'
+		 </if> 
+		  <if test="beginDate!=0">
+			and cast(tran_time as signed) &gt;=#{beginDate} 
+		 </if> 
+		 <if test="endDate!=0">
+			and cast(tran_time as signed) &lt;=#{endDate}
+		 </if> 
+		  <if test="dabiao!=null and !&quot;&quot;.equals(dabiao.trim())">
+			and dabiao=#{dabiao}
+		 </if> 
+	</select>
+	
+	<select id="getKeysAccount"  resultType="decimal">
+		select sum(tran_money) from trandetail where 1=1
+		 <if test="username!=null and !&quot;&quot;.equals(username.trim())">
+			and username =#{username}
+		 </if> 
+		 <if test="keywords_id!=0">
+			and keywords_id=#{keywords_id}
+		 </if> 
+		 <if test="keywords!=null and !&quot;&quot;.equals(keywords.trim())">
+			and keywords like '%${keywords}%'
+		 </if> 
+		  <if test="beginDate!=0">
+			and cast(tran_time as signed) &gt;=#{beginDate} 
+		 </if> 
+		 <if test="endDate!=0">
+			and cast(tran_time as signed) &lt;=#{endDate}
+		 </if> 
+		  <if test="dabiao!=null and !&quot;&quot;.equals(dabiao.trim())">
+			and dabiao=#{dabiao}
+		 </if> 
+	</select>
+	<delete id="delTranDetail" >
+		delete from trandetail where username=#{username}
+	</delete>
+	<delete id="delTranSerial" >
+		delete from transerial where username=#{username}
+	</delete>
+		<delete id="delRechange" >
+		delete from rechange where username=#{username}
+	</delete>
+</mapper>
+
+
+
+

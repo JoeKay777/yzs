@@ -1,0 +1,74 @@
+.cp {
+	height: 20px;
+	width: 260px;
+}
+.bt {
+	height: 23px;
+	width: 270px;
+}
+.bt2 {
+	height: 23px;
+	width: 150px;
+}
+.bt3 {
+	height: 23px;
+	width: 80px;
+}
+.bt4 {
+	height: 23px;
+	width: 100px;
+}
+.bt5 {
+	width: 500px;
+}
+.bt6 {
+	width: 600px;
+}
+.id {
+	height: 18px;
+	width: 25px;
+}
+ul {
+list-style:none;
+}
+body {
+	font-family:"ËÎÌו", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333;
+	background-repeat: repeat-x;
+	background-color: #F6F6F6;
+}
+a img {
+border:0;
+}
+
+a {
+	color:#000000;
+	font-size: 12px;
+}
+
+a:link {
+	text-decoration: none;
+	font-size: 12px;
+}
+a:visited {
+	color:#000000;
+	text-decoration: none;
+	font-size: 12px;
+}
+a:hover {
+}
+a:active {
+
+}
+
+.ask_content{width:99%; margin:0 10px; float:none;}
+.ask_content ul{ margin-bottom:10px; width:100%; float:left; border:1px solid #ccc; border-bottom:none}
+.ask_content ul li{ list-style:none; width:100%; float:left; text-indent:20px; line-height:20px; border-bottom:1px solid #ccc;}
+.ask_content ul .tit{ width:100%; background-color:#daf0fe; height:30px; line-height:30px; color:Red; font-weight:bold; text-indent:10px;}
+.ask_content ul li span{ float:right; color:#999; margin-right:10px; font-weight:normal;}
+.r_content{ width:98%;}
+.ask_content ul li a{background:url('/images/editPassword.jpg'); margin-left:20px; width:77px; height:32px; display:block; float:left; line-height:32px; text-align:center; text-indent:0; margin:5px 20px; }
+.ask_content ul li .download{ background:none; width:auto; height:auto; float:none; text-align:left; color:Red;}
+.recommand li{ float:left; margin-left:5px;}
+.warring{ color:Red; font-weight:bold;}

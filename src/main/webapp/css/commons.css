@@ -1,0 +1,953 @@
+﻿html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, span, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+}
+
+body {
+    color: #333;
+    font: 12px/1.5 tahoma,sans-serif;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    color: #f60;
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+dl, dt, dd, ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*public*/
+
+.container {
+    width: 986px;
+    margin: 0 auto;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.color-red {
+    color: #f00;
+}
+
+/*start*/
+.mHead {
+    overflow: hidden;
+}
+.mHead .logo
+{
+	width: 700px;
+    display: table;
+    height: 80px;
+    background: url("../images/logo/logo.jpg") no-repeat 0 2px;
+}
+.mHead .logo h1{
+    height: inherit;
+    display: table-cell;
+    vertical-align: middle;
+}
+.mHead .logo a
+{
+	display:block;
+    text-indent:-999em;
+}
+.mHead .tell-box {
+    width: 300px;
+    height: 80px;
+    line-height: 80px;
+    background: url("../images/tell.jpg") no-repeat 0 2px;
+    font-size: 26px;
+    padding-left: 156px;
+    box-sizing: border-box;
+}
+.mNav {
+    height: 40px;
+    background: #2277C3;
+    font-family: "Microsoft YaHei";
+}
+.mNav .nav_list li {
+    float: left;
+}
+.mNav .nav_list li a {
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+}
+.mNav .nav_list li a:hover {
+    color: #f60;
+    background: rgba(255,255,255,.5);
+}
+.mBanner .banner-main {
+    width: 734px;
+    height: 300px;
+    background: #eee;
+    position: relative;
+}
+.mBanner .row_tell {
+    width: 250px;
+    height: 298px;
+    border: 1px solid #ddd;
+}
+.mBanner .banner-list {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 0 ;
+    height: 300px;
+    display: none;
+}
+.mBanner .focus {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(0,0,0,.1);
+}
+.mBanner .focus li {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: rgba(255,255,255,.7);
+    border-radius: 50%;
+    margin: 0 3px;
+    cursor: pointer;
+}
+.mBanner .focus li.on {
+    background: #2277C3;
+}
+.mMain {
+    margin: 20px 0 0;
+}
+.mMain .m-content {
+    width: 726px;
+}
+.mMain .m-side {
+    width: 250px;
+}
+.mMain .why-info .info-title{
+    height: 36px;
+    background: url("../images/sy.png") no-repeat 0 0;
+}
+.mMain .why-info .info-title h2 {
+    font-size: 0;
+}
+.mMain .side-info {
+    padding: 10px 15px;
+    font-size: 14px;
+}
+.mMain .info-list li{
+    overflow: hidden;
+    padding: 10px 15px;
+    border-bottom: 1px dashed #ddd;
+}
+.mMain .info-list .i-icon {
+    width: 68px;
+    height: 68px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.mMain .info-list .i-content {
+    width: 618px;
+    font-size: 14px;
+}
+.mMain .info-list .i-content h3 {
+    color: #db0206;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.mMain .serve_teach {
+    margin-top: 25px;
+}
+.mMain .serve_teach .public {
+    width: 50%;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+.mMain .public .title {
+    position: relative;
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    background: url(../images/serve.jpg) no-repeat 0 0;
+}
+.mMain .public .title h2 {
+    padding-left: 15px;
+    font-size: 16px;
+    color: #fff;
+    font-family: "Microsoft YaHei";
+}
+.mMain .public .title .more {
+    position: absolute;
+    width: 25px;
+    height: 30px;
+    right: 0;
+    top: 0;
+    background: url("../images/more.gif") no-repeat 0 12px;
+}
+.mMain .public .news-list {
+    padding: 10px 0;
+}
+.mMain .public .news-list li{
+    padding-left: 15px;
+    height: 27px;
+    line-height: 27px;
+    background: url("../images/dian.jpg") no-repeat 0px 10px;
+}
+.mMain .public .news-list li a {
+    width: 250px;
+    display: block;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mMain .public .news-list li span{
+    float: right;
+}
+.mMain .serve_teach .teach_box {
+    padding-left: 10px;
+    padding-right: 0;
+}
+.mMain .serve_teach .teach_box .title {
+    background: url(../images/teach.jpg) no-repeat 0 0;
+}
+.mMain .m-side .title {
+    text-align: center;
+    background: #f2f2f2;
+    font-family: "Microsoft YaHei";
+    padding: 25px 40px;
+}
+.mMain .m-side .title  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d73d3d;
+}
+.mMain .m-side .title span {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #817f80;
+    padding: 6px 0 10px;
+    border-bottom: 1px dashed #ddd;
+}
+.mMain .frame-box {
+    height: 608px;
+    border-bottom: 1px solid #00AAFF;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.mFlinks .flinks_box{
+    border: 1px solid #ddd;
+}
+.mFlinks .flinks_box h3 {
+    border-bottom: 1px solid #ddd;
+    background: #f2f2f2;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 15px;
+}
+.mFlinks .flinks_box .links-list {
+    padding: 5px;
+}
+.mFlinks .flinks_box .links-list li {
+    float: left;
+}
+.mFlinks .flinks_box .links-list li a {
+    display: inline-block;
+    padding: 5px 9px;
+}
+.mSide {
+    margin-top: 20px;
+}
+.mSide .b-side-box {
+    height: 44px;
+    color: #fff;
+    font: 20px/36px  "Microsoft Yahei";
+    padding-left: 15px;
+    background: url(../images/b_side.jpg) no-repeat 0 0;
+}
+.mFooter {
+    padding: 15px 0;
+}
+.mFooter p {
+    font-family: 'Microsoft Yahei';
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    padding: 5px 0;
+}
+
+/*newslist start*/
+.ce_bread {
+    margin: 10px 0;
+}
+.ce_bread a{
+    color: #666;
+}
+.ce_bread a:hover{
+    color: #f60;
+}
+.news_page .news_split {
+    height: 5px;
+    background: #CCC;
+    position: relative;
+}
+.news_page .news_split:before {
+    content: "";
+    width: 189px;
+    height: 5px;
+    background: #c00;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.news_page .news_main {
+    width: 690px;
+}
+.news_page .news_list {
+    padding: 0 10px;
+}
+.news_page .news_list li {
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+.news_page .news_list .news_img {
+    float: left;
+    width: 130px;
+    height: 90px;
+    overflow: hidden;
+}
+.news_page .news_list .news_info {
+    width: 660px;
+    float: right;
+}
+.news_page .news_info .title {
+    overflow: hidden;
+    padding: 5px 0;
+}
+.news_page .news_info .title h3 {
+    float: left;
+    width: 495px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #0066CC;
+}
+.news_page .news_info .title h3 a{
+    color: #0066CC;
+}
+.news_page .news_info .title h3 a:hover {
+    color: #f60;
+}
+.news_page .news_info .title span {
+    font-weight: bold;
+}
+.news_page .news_info .title .date {
+    float: right;
+}
+.news_page .news_info .content {
+    font-size: 13px;
+}
+.news_page .news_content .pageList {
+    margin-top: 20px;
+}
+/*page*/
+.pageList {
+    overflow: hidden;
+    text-align: center;
+}
+.pageList a {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 0 10px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+.pageList a:hover, .pageList a.cur {
+    background-color: #f60;
+    border-color: #f60;
+    color: #fff;
+}
+/*right public*/
+.news_page .news_side {
+    width: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.news_side .row_public {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.news_side .row_public .title {
+    background: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 15px;
+    font-weight: bold;
+}
+.news_side .row_public ul {
+    padding: 10px;
+}
+.news_side .row_public ul li {
+    list-style: disc;
+    list-style-position: inside;
+}
+.news_side .row_public ul li a {
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+}
+.news_side .row_lm ul li,
+.news_side .row_tag ul li{
+    float: left;
+    width: 50%;
+}
+.news_side .row_yd .yd-list li a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.news_side .gb_row img {
+    max-width: 100%;
+}
+.news_side .row_tag ul li {
+    list-style: none;
+}
+.news_side .row_tag ul li a {
+    background: url("../images/tag_bg.png") no-repeat 0 11px;
+    white-space: nowrap;
+    padding-left: 15px;
+}
+/*contact info*/
+.row_tell .tell-box {
+    padding: 20px 15px;
+    font-family: "microsoft yahei";
+    color: #666;
+}
+.row_tell .tell-box h2 {
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: #f00;
+    border-bottom: 1px dashed #ddd;
+}
+.row_tell .tell-box .search-box {
+    padding: 10px 0;
+    overflow: hidden;
+}
+.row_tell .tell-box .search-box input {
+    display: inline-block;
+    float: left;
+    border: none;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-right: 0;
+}
+.row_tell .tell-box .search-box .b-text {
+    padding: 0 5px;
+    width: 179px;
+    box-sizing: border-box;
+}
+.row_tell .tell-box .search-box .b-text:focus {
+    border-color: #2277C3;
+}
+.row_tell .tell-box .search-box .b-submit {
+    cursor: pointer;
+    width: 39px;
+    border: none;
+    color: #fff;
+    background: url("../images/sever_icon.png") no-repeat 50% 50% #2277C3;
+    -webkit-transition: background-color ease .3s;
+    transition: background-color ease .3s;
+}
+.row_tell .tell-box .search-box .b-submit:hover {
+    background-color: #f60;
+}
+.row_tell .t-content {
+    padding: 10px 0;
+    font-size: 28px;
+    color: #f00;
+    text-align: center;
+    font-style: italic;
+}
+.row_tell .qq-talk {
+    padding-top: 10px;
+}
+/*newsview*/
+.mMain .news_content .news_view {
+}
+.mMain .news_content .news_view .title {
+    font-size: 24px;
+    color: #f60;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: bold;
+}
+.news_content .news_view .news-upd-time {
+    text-align: center;
+    color: #666;
+}
+.news_content .news_view  .news-upd-time span {
+    margin-right: 10px;
+}
+.news_content .news_view  .news-upd-time span a {
+    color: #f60;
+}
+.news_content .news_view  .news-upd-time span a:hover {
+    color: #2277C3;
+}
+.news_content .news_view .view-container {
+    margin: 15px 0;
+    overflow: hidden;
+    line-height: 1.8;
+}
+.news_content .news_view .view-container p {
+    margin-bottom: 10px;
+}
+.news_content .news_view .view-container img {
+    max-width: 100%;
+}
+/*login*/
+.mLogin{
+    background: #fff;
+    padding: 40px 0;
+    border: 4px solid #2277C3;
+    border-left: none;
+    border-right: none;
+    font-family: "microsoft yahei";
+    min-height: 450px;
+}
+.mLogin .login-box {
+    width: 370px;
+}
+.mLogin input {
+    outline: none;
+}
+.mLogin .btn-group {
+    width: 362px;
+    display: inline-block;
+}
+.mLogin .find-password {
+    color: #f60;
+}
+.mLogin .login-box .title{
+    font-size: 30px;
+    color: #292929;
+    margin-bottom: 20px;
+}
+.mLogin .login-list li{
+    margin-bottom: 20px;white-space: nowrap;
+}
+.btn-group {
+    display: block;
+    height: 14px;
+    line-height: 14px;
+    width: 100%;
+    border: #ddd 1px solid;
+    text-indent: 10px;
+    overflow: hidden;
+    color: #979696;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    outline: none;
+}
+.btn-group:focus{
+    border-color: #f60;
+}
+.mLogin .mYzm {
+    width: 60px;
+}
+.mLogin .yzmBox {
+    width: 75px;
+    height: 36px;
+    overflow: hidden;
+    text-align: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.mLogin .yzmBox img {
+    max-width: 100%;
+    height: 100%;
+}
+.mLogin .bc-dl .c-info{
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+.mLogin .mSubmit {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    background: #2277C3;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    border: none;
+    font-family: "Microsoft YaHei";
+    cursor: pointer;
+    -webkit-transition: background ease 0.3s;
+    -moz-transition: background ease 0.3s;
+    transition: background ease 0.3s;
+}
+.mLogin .mSubmit:hover {
+    background: #f60;
+}
+/*manage*/
+.manage .side_menu {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-top: 2px solid #2277C3;
+    padding: 5px 2px;
+    box-sizing: border-box;
+}
+.manage .tool_main {
+    width: 740px;
+}
+/*menu*/
+.menu-list {
+}
+.menu-list h3 {
+    font-weight: bold;
+    color: #2277C3;
+    padding-left: 25px;
+    background: url("../images/ai.jpg") no-repeat 10px 8px;
+}
+.menu-list ul {
+    padding-bottom: 5px;
+}
+.menu-list ul li{
+    margin-top: 5px;
+}
+.menu-list ul li a{
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 35px;
+    color: #333;
+}
+.menu-list ul li a:hover {
+    background: rgba(34, 119, 195, .3);
+}
+.menu-list ul li a.active {
+    background: #2277C3;
+    color: #fff;
+}
+
+/*component*/
+.well {
+    min-height: 20px;
+    padding: 12px;
+    margin: 20px 0;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    background: #FFFFE7;
+    border: 1px dashed #F4CE85;
+    line-height: 2em;
+}
+.well a {
+    color: #2277C3;
+}
+.well a:hover {
+    color: #f60;
+}
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 8px;
+    line-height: 1.0;
+    vertical-align: top;
+    text-align: left;
+}
+.table-striped>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #2277c3; font-weight:bold; background-color:#c9e0f5;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #dfe1e3;
+}
+
+.table-service>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 0px solid #2277c3; font-weight:bold; background-color:#d7eafb;
+}
+.table-service>tbody>tr:nth-child(odd)>td, .table-service>tbody>tr:nth-child(odd)>th {
+    background-color: #eff3f6;
+}
+
+span.must {
+    color: #f00;
+}
+.w-sm {
+    width: 150px !important;
+}
+.w-md {
+    width: 270px !important;
+}
+.w-lg{
+    width: 350px !important;
+}
+.control-text,
+.control-select,
+.control-area
+{
+    display: inline-block;
+    width: 100%;
+    height: 34px;
+    padding: 0px 6px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.control-text:focus,
+.control-select:focus,
+.control-area:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+}
+.control-select {
+    width: 100px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background: transparent;
+    width: 200px;
+    overflow: hidden;
+    -webkit-appearance: none;
+}
+.control-text,
+.control-select,
+.control-area
+{
+    display: inline-block;
+    width: 100%;
+    height: 34px;
+    padding: 0px 6px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.control-text:focus,
+.control-select:focus,
+.control-area:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+}
+.control-select {
+    width: 100px;
+}
+.control-area{
+    min-height: 150px;
+}
+.control-r-c {
+    display: inline-block;
+    margin-right: 5px;
+}
+.control-r-c input {
+    display: inline-block;
+    vertical-align: top;
+}
+.control-r-c label {
+    cursor: pointer;
+}
+.control-file {
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    height: 35px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.control-file input {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+}
+.control-file .imitate{
+    height: 33px;
+    line-height: 33px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    color: #666;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.control-button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.control-img{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    background: #f4f4f4;
+}
+.control-info {
+    display: block;
+    color: #999;
+    padding: 5px 0;
+}
+.control-info-red {
+    color: #f00;
+}
+.control-search {
+    text-align: left;
+    padding: 10px 0;
+}
+.control-search .control-text {
+    width: 150px;
+    height: 25px;
+    line-height: 25px;
+}
+.control-search .control-button {
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    background: #2277c3;
+    color: #fff;
+}
+.control-search .control-button:hover {
+    background: #0294de;
+}
+.control-button {
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    background: #2277c3;
+    color: #fff;
+}
+.control-button:hover {
+    background: #0294de;
+}
+/*tool*/
+.table-c tbody tr td {
+    vertical-align: middle !important;
+}
+.table-c tbody .control-text {
+    display: inline-block;
+}
+.table-c .btn-tj {
+    background: #2277c3;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    width: 120px;
+}
+.table-c .btn-tj:hover {
+    background: #0294de;
+}
+.m-table {
+    border: 1px solid #ddd;
+}
+.m-table tr th,
+.m-table tr td{
+    padding: 15px 8px !important;
+    text-align: center !important;
+}
+.m-table a{
+    color: #2277c3;
+}
+.m-table a:hover {
+    color: #f60;
+}

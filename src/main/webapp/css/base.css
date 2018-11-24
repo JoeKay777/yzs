@@ -1,0 +1,756 @@
+/**
+ * "Yet Another Multicolumn Layout" - YAML CSS Framework
+ *
+ * (en) YAML core stylesheet
+ * (de) YAML Basis-Stylesheet
+ *
+ * Don't make any changes in this file!
+ * Your changes should be placed in any css-file in your own stylesheet folder.
+ *
+ * @copyright       Copyright 2005-2012, Dirk Jesse
+ * @license         CC-BY 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ *                  YAML-CDL (http://www.yaml.de/license.html)
+ * @link            http://www.yaml.de
+ * @package         yaml
+ * @version         v4.0.1
+ * @revision        $Revision: 726 $
+ * @lastmodified    $Date: 2012-03-03 12:21:50 +0100 (Sa, 03 Mrz 2012) $
+ */
+
+@media all {
+
+	/**
+	* @section CSS-Normalisation Module
+	*/
+
+	/* (en) Global reset of paddings and margins for all HTML elements */
+	/* (de) Globales Zurücksetzen der Innen- und Außenabstände für alle HTML-Elemente */
+	* { margin:0; padding:0; }
+
+	/* (en) Correction:margin/padding reset caused too small select boxes. */
+	/* (de) Korrektur:Das Zurücksetzen der Abstände verursacht zu kleine Selectboxen. */
+	option { padding-left:0.4em; } /* LTR */
+	select { padding:1px; }
+
+	/**
+	* (en) Global fix of the Italics bugs in IE 5.x and IE 6
+	* (de) Globale Korrektur des Italics Bugs des IE 5.x und IE 6
+	*
+	* @bugfix
+	* @affected   IE 5.x/Win, IE6
+	* @css-for    IE 5.x/Win, IE6
+	* @valid      yes
+	*/
+	* html body * { overflow:visible; }
+
+	body {
+		/* (en) Fix for rounding errors when scaling font sizes in older versions of Opera browser */
+		/* (de) Beseitigung von Rundungsfehler beim Skalieren von Schriftgrößen in älteren Opera Versionen */
+		font-size:100%;
+
+		/* (en) Standard values for colors and text alignment */
+		/* (de) Vorgabe der Standardfarben und Textausrichtung */
+		background:#fff;
+		color:#000;
+		text-align:left; /* LTR */
+	}
+
+	/* (en) avoid visible outlines on DIV containers in Webkit browsers */
+	/* (de) Vermeidung sichtbarer Outline-Rahmen in Webkit-Browsern */
+	div:target { outline:0 none; }
+
+	/* (en) HTML 5 - adjusting visual formatting model to block level */
+	/* (en) HTML 5 - Anpassung des visuellen Formatmodells auf Blockelemente */
+	article,aside,details,figcaption,figure,
+	footer,header,hgroup,nav,section {
+		display:block;
+	}
+
+	/* (en) HTML5 - default media element styles */
+	/* (de) HTML5 - Standard Eigenschaften für Media-Elemente */
+	audio,
+	canvas,
+	video {
+		display: inline-block;
+	}
+
+	/* (en) HTML5 - don't show <audio> element if there aren't controls */
+	/* (de) HTML5 - <audio> ohne Kontrollelemente sollten nicht angezeigt werden */
+	audio:not([controls]) {
+		display: none;
+	}
+
+	/* (en) HTML5 - add missing styling in IE & old FF for hidden attribute  */
+	/* (de) HTML5 - Eigenschaften für das hidden-Attribut in älteren IEs und FF nachrüsten */
+	[hidden] {
+		display: none;
+	}
+
+	/* (en) force consistant appearance of input[type="search"] elements in all browser  */
+	/* (de) Einheitliches Erscheinungsbild für input[type="search"] Elemente erzwingen  */
+	input[type="search"] {
+		-webkit-appearance: textfield;
+	}
+	input[type="search"]::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+
+	/* (en) Clear borders for <fieldset> and <img> elements */
+	/* (de) Rahmen für <fieldset> und <img> Elemente löschen */
+	fieldset, img { border:0 solid; }
+
+	/* (en) new standard values for lists, blockquote, cite and tables */
+	/* (de) Neue Standardwerte für Listen, Zitate und Tabellen */
+	ul, ol, dl { margin:0 0 1em 1em; } /* LTR */
+	li {
+		line-height:1.5em;
+		margin-left:0.8em; /* LTR */
+	}
+
+	dt { font-weight:bold; }
+	dd { margin:0 0 1em 0.8em; } /* LTR */
+
+	blockquote { margin:0 0 1em 0.8em; } /* LTR */
+	q { quotes: none; }
+
+	blockquote:before, blockquote:after,
+	q:before, q:after { content: ''; content:none }
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+ 	/**
+	* @section Float Handling Module
+	*/
+
+	/* (en) clearfix method for clearing floats */
+	/* (de) Clearfix-Methode zum Clearen der Float-Umgebungen */
+	.ym-clearfix:before {
+		content:"";
+		display:table;
+	}
+	.ym-clearfix:after {
+		clear:both;
+		content:".";
+		display:block;
+		font-size:0;
+		height:0;
+		visibility:hidden;
+	}
+
+	/* (en) alternative solutions to contain floats */
+	/* (de) Alternative Methoden zum Einschließen von Float-Umgebungen */
+	.ym-contain-dt { display:table; width: 100%; overflow: visible; }
+	.ym-contain-oh { overflow:hidden; width:100%; display:block; }
+	.ym-contain-fl { float:left; width:100%; }
+
+	/**
+	* @section Accessibility Module
+	*
+	* (en) skip links and hidden content
+	* (de) Skip-Links und versteckte Inhalte
+	*/
+
+	/* (en) classes for invisible elements in the base layout */
+	/* (de) Klassen für unsichtbare Elemente im Basislayout */
+	.ym-skip,
+	.ym-hideme,
+	.ym-print {
+		position:absolute;
+		top:-32768px;
+		left:-32768px; /* LTR */
+	}
+
+	/* (en) make skip links visible when using tab navigation */
+	/* (de) Skip-Links für Tab-Navigation sichtbar schalten */
+	.ym-skip:focus,
+	.ym-skip:active {
+		position:static;
+		top:0;
+		left:0;
+	}
+
+	/* skiplinks:technical setup */
+	.ym-skiplinks {
+		position:absolute;
+		top:0px;
+		left:-32768px;
+		z-index:1000;
+		width:100%;
+		margin:0;
+		padding:0;
+		list-style-type:none;
+	}
+
+	.ym-skiplinks .ym-skip:focus,
+	.ym-skiplinks .ym-skip:active {
+		left:32768px;
+		outline:0 none;
+		position:absolute;
+		width:100%;
+	}
+}
+
+@media screen, projection {
+
+	/**
+	* @section Column Module
+	*
+	* default column config:
+	* |-------------------------------|
+	* | col1    | col3      | col2    |
+	* | 20%     | flexible  | 20%     |
+	* |-------------------------------|
+	*/
+
+	.ym-column { display:table; width:100%; }
+
+	.ym-col1 { float:left; width:20%; }
+	.ym-col2 { float:right; width:20%; }
+	.ym-col3 { width:auto; margin:0 20%; }
+
+	.ym-cbox { padding: 0 10px }
+	.ym-cbox-left { padding: 0 10px 0 0 }
+	.ym-cbox-right { padding: 0 0 0 10px }
+
+	/* (en) IE-Clearing:Only used in Internet Explorer, switched on in iehacks.css */
+	/* (de) IE-Clearing:Benötigt nur der Internet Explorer und über iehacks.css zugeschaltet */
+	.ym-ie-clearing { display:none; }
+
+	/**
+	* @section Grid Module
+	*
+	*/
+
+	.ym-grid {
+		display:table;
+		width:100%;
+		table-layout:fixed;
+		list-style-type: none;
+		padding-left:0;
+		padding-right:0;
+		margin-left:0;
+		margin-right:0;
+	}
+
+	.ym-gl { float:left; margin: 0; }
+	.ym-gr { float:right; margin: 0 0 0 -5px; }
+
+	.ym-g20 { width:20%; }
+	.ym-g40 { width:40%; }
+	.ym-g60 { width:60%; }
+	.ym-g80 { width:80%; }
+	.ym-g25 { width:25%; }
+	.ym-g33 { width:33.333%; }
+	.ym-g50 { width:50%; }
+	.ym-g66 { width:66.666%; }
+	.ym-g75 { width:75%; }
+	.ym-g38 { width:38.2%; }
+	.ym-g62 { width:61.8%; }
+
+	.ym-gbox { padding: 0 10px }
+	.ym-gbox-left { padding: 0 10px 0 0 }
+	.ym-gbox-right { padding: 0 0 0 10px }
+
+	.ym-equalize { overflow:hidden; }
+
+	.ym-equalize > [class*="ym-g"] {
+		display:table-cell;
+		float:none;
+		margin:0;
+		vertical-align:top;
+	}
+
+	.ym-equalize > [class*="ym-g"] > [class*="ym-gbox"] {
+		padding-bottom: 10000px;
+		margin-bottom: -10000px
+	}
+}
+
+@media all {
+
+   /**
+	* @section Form Module
+	*
+	* Vertical-Forms - technical base (standard)
+	*
+	* |-------------------------------|
+	* | form                          |
+	* |-------------------------------|
+	* |   label                       |
+	* |   input / select / textarea   |
+	* |-------------------------------|
+	* | /form                         |
+	* |-------------------------------|
+	*
+	* (en) Styling of forms where both label and input/select/textarea are styled with display:block;
+	* (de) Formulargestaltung, bei der sowohl label als auch input/select/textarea mit display:block; gestaltet werden
+	*/
+
+	.ym-form,
+	.ym-form fieldset { overflow:hidden; }
+
+	.ym-form div { position:relative; }
+	
+	.ym-form label,
+	.ym-form .ym-message {
+		position:relative;
+		display:block; /* important for Safari */
+	}
+
+	.ym-form .ym-fbox-check label {
+		display:inline;
+	}
+
+	.ym-form input,
+	.ym-form textarea { cursor:text; }
+
+	.ym-form input[type="checkbox"],
+	.ym-form input[type="radio"],
+	.ym-form select,
+	.ym-form label { cursor:pointer; }
+
+	/* small adjustments for Internet Explorer - all versions */
+	.ym-form textarea { overflow: auto; }
+
+	/* Hiding of hidden fields (otherwise ugly spaces in Firefox) | Versteckte Felder wirklich verstecken (sonst ggf. häßliche Lücken im Firefox) */
+	.ym-form input[type=hidden] { display:none !important; }
+
+	/* styling containing DIV elements | Gestaltung der kapselnden DIV-Elemente */
+	.ym-form .ym-fbox-text:before,
+	.ym-form .ym-fbox-select:before,
+	.ym-form .ym-fbox-check:before,
+	.ym-form .ym-fbox-button:before {
+		content:"";
+		display:table;
+	}
+
+	.ym-form .ym-fbox-text:after,
+	.ym-form .ym-fbox-select:after,
+	.ym-form .ym-fbox-check:after,
+	.ym-form .ym-fbox-button:after {
+		clear:both;
+		content:".";
+		display:block;
+		font-size:0;
+		height:0;
+		visibility:hidden;
+	}
+
+	/* styling standard form elements with 'almost' equal flexible width | Gestaltung der einzelnen Formularelemente mit annähend gleicher Breite */
+	.ym-form select,
+	.ym-form input,
+	.ym-form textarea {
+		
+		position:relative;
+		
+	}
+
+	.ym-form .ym-fbox-check input {
+		display: inline;
+		width: auto;
+	}
+
+	/* Styling of buttons | Gestaltung von Buttons */
+	.ym-form .ym-fbox-button input {
+		display: inline;
+		overflow:visible;  /* Fixes IE7 auto-padding bug */
+		width:auto;
+	}
+
+	/* avoid jumping checkboxes & radiobuttons in IE8 */
+	.ym-form .ym-fbox-check input:focus,
+	.ym-form .ym-fbox-check input:hover,
+	.ym-form .ym-fbox-check input:active {
+		border:0 none;
+	}
+
+	/* Indent Checkbox fields to match label-width | Checkboxen um den gleichen Wert einrücken, wie die Breite der labels */
+
+	.ym-full .ym-fbox-select select,
+	.ym-full .ym-fbox-text input,
+	.ym-full .ym-fbox-text textarea {
+		
+		margin-right: -3px;
+	}
+
+   /**
+	* Columnar forms display - technical base (optional)
+	*
+	* |-------------------------------------------|
+	* | form                                      |
+	* |-------------------------------------------|
+	* |                                           |
+	* |   label   |   input / select / textarea   |
+	* |                                           |
+	* |-------------------------------------------|
+	* | /form                                     |
+	* |-------------------------------------------|
+	*
+	* (en) Styling of forms where label floats left of form-elements
+	* (de) Formulargestaltung, bei der die label-Elemente nach links fließen
+	*/
+
+	/* Columnar display | Spalten-Darstellung */
+	.ym-columnar .ym-fbox-text label,
+	.ym-columnar .ym-fbox-select label {
+		display:inline;
+		float:left;
+		width:30%; /* Can be fixed width too | Kann auch eine fixe Angabe sein */
+	}
+	.ym-columnar .ym-fbox-check {
+		position:relative;
+	}
+
+	.ym-label { display:block; }
+	.ym-columnar .ym-fbox-check .ym-label {
+		position:absolute;
+		top:0;
+	}
+
+	/* Indent Checkbox fields to match label-width | Checkboxen um den gleichen Wert einrücken, wie die Breite der labels */
+	.ym-columnar .ym-fbox-check input,
+	.ym-columnar .ym-error .ym-message {
+		margin-left:30%;
+	}
+
+	/* global and local columnar settings for button alignment */
+	.ym-columnar fieldset .ym-fbox-button,
+	fieldset.ym-columnar .ym-fbox-button {
+		padding-left:30%;
+	}
+
+	.ym-columnar .ym-fbox-select select,
+	.ym-columnar .ym-fbox-text input,
+	.ym-columnar .ym-fbox-text textarea {
+		float:left;
+		
+		margin-right: -3px;
+	}
+
+	/**
+	* @section Form Construction Kit | Screen Adjustments
+	*
+	*/
+
+	.ym-fbox-select select { width:60%; }
+	.ym-full .ym-fbox-select select { width:94.8%; }
+	.ym-columnar .ym-fbox-select select { width:68.8%; }
+}
+
+@media print {
+
+	/**
+	* @section print adjustments for core modules
+	*
+	* (en) float clearing for subtemplates. Uses display:table to avoid bugs in FF & IE
+	* (de) Float Clearing für die Subtemplates. Verwendet display:table, um Darstellungsprobleme im FF & IE zu vermeiden
+	*
+	* @bugfix
+	* @since     3.0
+	* @affected  FF2.0, FF3.0, IE7
+	* @css-for   all browsers
+	* @valid     yes
+	*/
+
+	.ym-grid > .ym-gl,
+	.ym-grid > .ym-gr {
+		overflow:visible;
+		display:table;
+	}
+
+	/* (en) make .ym-print class visible */
+	/* (de) .ym-print-Klasse sichtbar schalten */
+	.ym-print {
+		position:static;
+		left:0;
+	}
+
+	/* (en) generic class to hide elements for print */
+	/* (de) Allgemeine CSS Klasse, um beliebige Elemente in der Druckausgabe auszublenden */
+	.ym-noprint {
+		display:none !important;
+	}
+}
+
+.list_right_Newsnr{clear:both; width:96%; height:auto; padding:0 15px;}
+
+
+
+.list_right_Newsnr h1{clear:both; width:100%; height:auto; line-height:30px; text-align:center; font-size:18px; color:#016fbc; font-weight:normal; margin-top:15px;}
+
+
+
+.list_right_Newsnr p.time{clear:both; width:100%; height:30px; line-height:30px; text-align:center; color:#a1a1a1; padding-bottom:15px; padding-top:5px; border-bottom:1px solid #eee;}
+
+
+
+.list_right_Newsnr p.time span{padding:0 10px;}
+
+
+
+.list_right_Newsnr div.nr{clear:both; width:100%; height:auto; line-height:28px; color:#555; font-size:12px; padding:20px 10px 28px 10px;border-bottom:1px solid #eee;}
+
+
+
+.list_right_Newsnr div.nr img{clear:both; margin:18px auto;}
+
+
+
+.list_right_Newsnr p.per{clear:both; width:100%; height:32px; line-height:32px; padding-left:10px; font-size:14px; color:#474747; margin-top:20px;}
+
+
+
+.list_right_Newsnr p.per a{color:#0071bd;}
+
+
+
+.list_right_Newsnr p.next{clear:both; width:680px; height:32px; line-height:32px; padding-left:10px; font-size:14px; color:#474747;}
+
+
+
+.list_right_Newsnr p.next a{color:#0071bd;}
+
+/*资讯中心列表页面的--dl*/
+dl.news_dl {font-size:14px; color:#666; padding:0 5px; line-height:22px; border-bottom:1px dashed #CCCCCC;}
+dl.news_dl a{ color:#000; }
+dl.news_dl dt { margin-bottom:3px; margin-top:5px; line-height:24px; height:24px; overflow:hidden;}
+dl.news_dl .dt_1 { height:20px; no-repeat 0 6px;  padding-left:10px;  font-size:14px; color:#333; }
+dl.news_dl .dt_1:hover {no-repeat 0 6px;color:#D40426; }/*资讯首页内容,点击时的图片*/
+dl.news_dl .dt_2 { font-size:12px; float:right; padding:0 10px 0 8px;  font-family:"宋体"; }
+dl.news_dl .dt_3 { font-size:12px;}
+dl.news_dl .dt_3 a { color:#FF0000; text-decoration:underline;} /*文章出处*/
+
+
+/*datepicker begin*/
+.datepicker_w .date_selector * {
+	width: auto;
+	height: auto;
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+	font-size:12px;
+}
+.datepicker_w .date_selector {
+	background: #FFF;
+	border: 1px solid #bbb;
+	padding: 5px;
+	margin: -1px 0 0 0;
+	position: absolute;
+	z-index: 100000;
+	display: none;
+	width:210px
+}
+
+.datepicker_w .date_selector table{
+	width:210px;
+	margin-left:3px;
+}
+
+.datepicker_w .date_clearer{
+	color: #fd9000;
+	padding-left:3px;
+	cursor:pointer;
+	font-weight:bold;
+	font-family:sans-serif;
+    font-size:14px;
+    vertical-align: -3px;
+}
+
+.datepicker_w .date_selector_ieframe {
+	position: absolute;
+	z-index: 99999;
+	display: none;
+}
+
+.datepicker_w .error_msg{
+	display:none;
+	text-align:center;
+	font-size:0.8em;
+	color:#666
+}
+
+.datepicker_w .date_selector .nav {
+	width: 17.5em; /* 7 * 2.5em */
+}
+.datepicker_w .date_selector .month_nav, .datepicker_w .date_selector .year_nav {
+	margin: 0 0 3px 0;
+	padding: 0;
+	display: block;
+	position: relative;
+	text-align: center;
+}
+.datepicker_w .date_selector .month_nav {
+	float: left;
+	width: 56%;
+}
+.datepicker_w .date_selector .year_nav {
+	float: right;
+	width: 37%;
+	position:relative;
+}
+
+.datepicker_w .date_selector .month_nav select {
+	width:75px;
+	margin: 0 auto;
+	border:1px solid #ccc;
+	position:relative;
+	top:1px
+}
+
+.datepicker_w .date_selector .year_nav .year_input {
+	text-align:center;
+	width:36px;
+	border:1px solid #ccc;
+	position:relative;
+	top:2px
+}  
+
+.datepicker_w .date_selector .month_name, .datepicker_w .date_selector .year_name {
+	font-weight: bold;
+	line-height: 20px;
+}
+.datepicker_w .date_selector .button {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 18px;
+	height: 18px;
+	line-height: 17px;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
+	font-size: 120%;
+	overflow: hidden;
+	border: 1px solid #F2F2F2;
+	cursor:pointer;
+}
+
+.datepicker_w .date_selector .button:hover, .datepicker_w .date_selector .button.hover {
+	background: none;
+	color: #333;
+	cursor: pointer;
+	border-color: #ccc;
+}
+
+.datepicker_w .date_selector .prev {
+	left: 0;
+}
+.datepicker_w .date_selector .next {
+	right: 0;
+}
+
+.datepicker_w .date_selector table {
+	margin:0 auto;
+	border-spacing: 1px;
+
+	clear: both;
+}
+.datepicker_w .date_selector th{
+	padding-top:5px
+}
+
+.datepicker_w .date_selector th, .datepicker_w .date_selector td {
+	text-align: center;
+	color: black;
+}
+
+.datepicker_w .date_selector th.week_label{
+	font-weight:normal;
+	font-style:italic;
+	font-size:80%;
+	width:25px
+}
+
+.datepicker_w .date_selector .week_num, .datepicker_w .date_selector .hover .week_num, .datepicker_w .date_selector .selected .week_num{
+	font-style:italic;
+	color:#333 !important;
+	vertical-align:bottom !important;
+	text-align:right;
+	border:none !important;
+	font-size:70%;
+	background:#FCFCFC !important;
+	padding-right:4px;
+}
+
+.datepicker_w .date_selector td {
+	border: 1px solid #ccc;
+	line-height: 2em;
+	text-align: center;
+	white-space: nowrap;
+	color: #003C78;
+	background: white;
+}
+.datepicker_w .date_selector td.today {
+	background: #FFFEB3;
+}
+.datepicker_w .date_selector td.unselected_month {
+	color: #ccc;
+}
+.datepicker_w .date_selector td.selectable_day, .datepicker_w .date_selector tr.selectable_week td {
+	cursor: pointer;
+	background: #eee;
+	border:1px solid #aaa;
+	color:#333
+}
+.datepicker_w .date_selector td.selected, .datepicker_w .date_selector tr.selected  td{
+	background: orange;
+	font-weight: bold;
+    color: #fff;
+}
+.datepicker_w .date_selector tr.selectable_week.hover td, .datepicker_w .date_selector td.selectable_day.hover {
+	background: #fd9000;
+	color: #fff;
+}
+
+.RightTimewarp {
+    margin-top: 11px;
+    height: 36px;
+    line-height: 36px;
+    background: #fffbef;
+    border: 1px dashed #eab581;
+    padding-left: 11px;
+}
+
+.importantTips {
+    width: 670px;
+    padding: 10px 14px 14px 14px;
+    border: 1px dashed #ffa024;
+    background-color: #fffcea;
+}
+
+.i-inp,
+.i-textarea{
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #c1c1c1;
+    font-size: 14px;
+    width: 250px;
+}
+
+.i-items {
+    float: left;
+    width:155px
+}
+.i-items {
+    zoom: 1;
+    padding: 5px 0;
+    position: relative;
+    padding-left: 100px;
+}
+#search,.ym-form
+{
+    width:99%;
+    display:block;
+    float:left;
+    margin-bottom:0px !important;
+}
+.i-til{ float:left;}
+
+.ym-form{ margin-bottom:20px!important;}
+#search input.text{ float:left;}

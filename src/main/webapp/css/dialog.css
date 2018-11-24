@@ -1,0 +1,48 @@
+﻿/*弹出登录框*/
+#BgDiv { background: #000; position: absolute; z-index: 99; left: 0; top: 0; display: none; opacity: 0.5; filter: alpha(opacity=50); -moz-opacity: 0.5; cursor: pointer; }
+#ConDiv { position: absolute; width: 513px; height: 293px; z-index: 100; background-color: #fff; display: none; }
+
+
+.editPassword{ width:513px; height:293px;}
+.editPassword input{
+	width:229px; height:38px; padding:0 0 0 5px; border:none; line-height:38px;
+	background:url('../images/login-input-bg.png') no-repeat scroll 0 0; float:left;
+}
+.editPassword .close{ width:22px;display:block; height:15px; position:absolute; top:10px; left:480px; cursor:pointer;}
+.editPassword .warming,.ask .warming{ width:130px; height:38; line-height:38px;no-repeat 0 8px;
+                        display:block; float:left; margin-left:5px; text-indent:25px; color:Red;
+                        }
+ .editPassword a, .ask a
+ {
+    margin-left:20px; width:77px; height:32px; display:block; float:left; line-height:32px; text-align:center;   
+ }
+ .ask input{ float:left;}
+  .ask textarea{ float:left;}
+        .style14
+        {
+            width: 95px;
+            height: 56px;
+        }
+        .style15
+        {
+            height: 56px;
+        }
+        .style16
+        {
+            width: 95px;
+            height: 50px;
+        }
+        .style17
+        {
+            height: 50px;
+        }
+        .style18
+        {
+            width: 95px;
+            height: 55px;
+        }
+        .style19
+        {
+            height: 55px;
+        }
+
